@@ -42,22 +42,21 @@ namespace Vidly.Controllers
             return Content("id=" + id);
         }
 
-        //Get: Movies
-        public ActionResult Index(int? pageIndex, string sortBy)
+        public ViewResult Index()
         {
-            if (!pageIndex.HasValue)
-            {
-                pageIndex = 1;
-            }
-
-            if (string.IsNullOrWhiteSpace(sortBy))
-            {
-                sortBy = "Name";
-            }
-
-            return Content($"pageIndex = {pageIndex} & sortBy={sortBy}");
+            return View(GetMovies());
         }
 
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie() {Name = "Shrek"},
+                new Movie() {Name = "Gone With The Wind"},
+                new Movie() {Name = "The Godfather"}
 
+            };
+
+        }
     }
 }
