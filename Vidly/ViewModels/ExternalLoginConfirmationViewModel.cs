@@ -13,6 +13,7 @@ namespace Vidly.ViewModels
         public string DrivingLicense { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string Phone { get; set; }
     }
 }

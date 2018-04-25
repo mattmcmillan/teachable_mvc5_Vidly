@@ -25,6 +25,7 @@ namespace Vidly.ViewModels
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string Phone { get; set; }
     }
 }
