@@ -20,6 +20,7 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult New()
         {
             var memebershipTypes = _context.MembershipTypes.ToList();
@@ -34,6 +35,7 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -84,6 +86,7 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        [Authorize(Roles = RoleName.CanManageCustomers)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
