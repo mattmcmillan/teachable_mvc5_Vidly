@@ -66,7 +66,7 @@ namespace Vidly.Controllers.Api
             movie.NumberAvailable = movie.NumberInStock;
             _context.Movies.Add(movie);
             _context.SaveChanges();
-
+            
             movieDto.Id = movie.Id;
 
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
